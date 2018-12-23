@@ -184,7 +184,7 @@ function importFromBelow() {
             && instance.publicInstance.componentWillUnmount();
             parentDom.removeChild(instance.dom);
             return null;
-        // 组件类型更新
+        // 替换组件
         } else if (instance.element.type !== element.type) {
             const newInstance = instantiate(element);
             // componentDidMount
@@ -199,6 +199,7 @@ function importFromBelow() {
             instance.childInstances = reconcileChildren(instance, element);
             instance.element = element;
             return instance;
+        // 子组件更新
         } else {
             if (instance.publicInstance
                 && instance.publicInstance.shouldcomponentUpdate) {
